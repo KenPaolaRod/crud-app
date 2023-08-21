@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css"  crossorigin="anonymous">
+  <title>To Do App</title>
+</head>
+<body>
+  <div class="container">
+  <header>
+    <p class="app-name">To Do App</p>
+    <div>
+      <img src="/img/to-do-app-profile-pic .jpg" alt="Profile Picture">
+      <form action="">
+        <input type="text" class="to-do" placeholder="To do">
+        <input type="text" class="description" placeholder="Description">
+        <button class="btn btn-purple" id="submit-to-do">Add</button>
+      </form>
+    </div>
+
+    <div class="input-error fire-input-error ">
+      <p>Debes escribe algo primero...</p>
+    </div>
+  </header>
+
+  <section class="to-do-section">
+    <article>
+      <h1>To Do App</h1>
+      <p class="number-of-to-do">Hi Kenyerling, you have 3 to do in your list</p>
+      <div class="input-boxes">
+        <div class="input-box">
+          <h2>tarea</h2>
+          <p>descripcion</p>
+          <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="remove-btn"><i class="fa-solid fa-trash-can action-icone"></i></button>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
