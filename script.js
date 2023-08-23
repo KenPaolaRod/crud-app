@@ -5,6 +5,7 @@ const submitError = document.querySelector(".input-error");
 const toDoBox = document.querySelector(".input-boxes");
 const form = document.getElementById("form");
 
+
 let tasks = [];
 
 loadTasks()
@@ -12,8 +13,13 @@ mostrar()
 
 function loadTasks() {
   let task = localStorage.getItem("task")
-  tasks = JSON.parse(task)
+  if (task) {
+    tasks = JSON.parse(task)
+  } else {
+    []
+  }
 }
+
 
 function mostrar() {
   tasks.forEach(e => showTask(e.title, e.desc))
@@ -21,8 +27,8 @@ function mostrar() {
 
 function addTask(tit, dec) {
   let myTask = {
-    titles: tit,
-    descs: dec
+    title: tit,
+    desc: dec
   }
 
   tasks.push(myTask)
