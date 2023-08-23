@@ -160,7 +160,7 @@ header form {
 
 .edit-btn, .remove-btn {
   background-color: transparent;
-  border: 1px solid var(--bg-color-darker);
+  border: none;
   color: var(--bg-color-darker);
   cursor: pointer;
   padding: 0.5rem;
