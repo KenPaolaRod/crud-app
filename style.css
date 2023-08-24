@@ -158,6 +158,10 @@ header form {
   grid-row: 2/3;
 }
 
+/* .input-box span {
+  display: none;
+} */
+
 .edit-btn, .remove-btn {
   background-color: transparent;
   border: none;
