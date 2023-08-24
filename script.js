@@ -21,9 +21,14 @@ function loadTasks() {
 
 
 function mostrar() {
+  const taskBoxes = document.querySelectorAll(".input-box");
+
+  if(taskBoxes) {
+    taskBoxes.forEach(task => task.remove())
+  }
+
   tasks.forEach(e => showTask(e.title, e.desc, tasks.indexOf(e)))
 }
-
 
 function addTask(tit, dec) {
   let myTask = {
@@ -33,9 +38,13 @@ function addTask(tit, dec) {
 
   tasks.push(myTask)
   localStorage.setItem("task", JSON.stringify(tasks));
-
-  showTask(tit, dec, tasks.length - 1)
 }
+
+function removeTask(task) {
+  tasks.splice(task, 1)
+  localStorage.setItem("task", JSON.stringify(tasks));
+}
+
 
 function showTask(title, desc, index) {
   let toDoDiv = document.createElement("div");
@@ -57,10 +66,9 @@ function showTask(title, desc, index) {
   removeBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
-    console.log(`${[index]} este es el index`);
-
-    removeBtn.parentElement.remove()
+    //removeBtn.parentElement.remove()
     removeTask(index)
+    mostrar()
   })
 
   const editIcon = document.createElement("i");
@@ -89,11 +97,7 @@ submitToDo.addEventListener("click", function (e) {
   e.preventDefault()
 
   addTask(inpTitle.value, inpDesc.value);
-
-  // if(!tasks) {
-  //   console.log("mostrar called")
-  //   mostrar()
-  // } 
+  mostrar()
 
   clear()
 })
@@ -102,12 +106,5 @@ function clear() {
   form.reset();
 }
 
-
-function removeTask(task) {
-  tasks.splice(task, 1)
-  console.log(tasks);
-
-  localStorage.setItem("task", JSON.stringify(tasks));
-}
 
 
