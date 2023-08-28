@@ -4,9 +4,10 @@ const submitToDo = document.getElementById("submit-to-do");
 const submitError = document.querySelector(".input-error");
 const toDoBox = document.querySelector(".input-boxes");
 const form = document.getElementById("form");
-const updateBtnsBox = document.querySelector(".update-btns")
+const updateBtnsBox = document.querySelector(".update-btns");
 const updateBtn = document.getElementById("update-btn");
-const errorMsg = document.querySelector(".input-error")
+const errorMsg = document.querySelector(".input-error");
+const numberOfTasks = document.querySelector(".number-of-to-do")
 
 let editIndex;
 let tasks = [];
@@ -33,7 +34,10 @@ function mostrar() {
     taskBoxes.forEach(task => task.remove())
   }
 
-  tasks.forEach(e => showTask(e.title, e.desc, tasks.indexOf(e)))
+  tasks.forEach(e => showTask(e.title, e.desc, tasks.indexOf(e)));
+
+  // mostrar el numero de tasks que hay pendientes
+  numberOfTasks.textContent = `Hi Kenyerling, you have ${tasks.length} in your list`
 }
 
 // aempujar task al array de tasks

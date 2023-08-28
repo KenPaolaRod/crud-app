@@ -164,6 +164,11 @@ header form {
   letter-spacing: 1.8px;
 }
 
+.input-boxes {
+  display: grid;
+  row-gap: 1rem;
+}
+
 .input-box {
   border: 1px var(--color-semi-dark) solid;
   border-radius: 10px;
@@ -173,7 +178,7 @@ header form {
   grid-template-columns: 1fr -webkit-min-content -webkit-min-content;
   grid-template-columns: 1fr min-content min-content;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+       column-gap: 1rem;    
 }
 
 .input-box p {
@@ -204,6 +209,10 @@ header form {
   .container {
     display: grid;
     grid-template-columns: 341px 3fr;
+  }
+
+  .input-box {
+    width: 40rem;
   }
 }
 
