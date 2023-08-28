@@ -4,12 +4,16 @@ const submitToDo = document.getElementById("submit-to-do");
 const submitError = document.querySelector(".input-error");
 const toDoBox = document.querySelector(".input-boxes");
 const form = document.getElementById("form");
+const updateBtn = document.getElementById("update-btn");
 
+let editIndex;
 let tasks = [];
 
 loadTasks()
 mostrar()
 
+
+// si hay tasks pendientes, mostrar cuando la pagina cargue
 function loadTasks() {
   let task = localStorage.getItem("task")
   if (task) {
@@ -19,7 +23,7 @@ function loadTasks() {
   }
 }
 
-
+// Mostrar task en el UI
 function mostrar() {
   const taskBoxes = document.querySelectorAll(".input-box");
 
@@ -30,6 +34,7 @@ function mostrar() {
   tasks.forEach(e => showTask(e.title, e.desc, tasks.indexOf(e)))
 }
 
+// aempujar task al array de tasks
 function addTask(tit, dec) {
   let myTask = {
     title: tit,
@@ -40,12 +45,38 @@ function addTask(tit, dec) {
   localStorage.setItem("task", JSON.stringify(tasks));
 }
 
+// eliminar task
 function removeTask(task) {
   tasks.splice(task, 1)
   localStorage.setItem("task", JSON.stringify(tasks));
 }
 
+// cuando se le da click al boton de editar, poder editar.
+function editTask(index) {
+  editIndex = index
+  inpTitle.value = tasks[index].title
+  inpDesc.value = tasks[index].desc
+}
 
+// poder ver reflejados los cambios editados
+function updateTask() {
+  tasks[editIndex].title = inpTitle.value;
+  tasks[editIndex].desc = inpDesc.value;
+
+  localStorage.setItem("task", JSON.stringify(tasks));
+  mostrar()
+}
+
+updateBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  updateTask()
+  console.log(tasks);
+
+  clear()
+
+})
+
+// inyectar el codigo y crear los estilos de las cajas de tasks
 function showTask(title, desc, index) {
   let toDoDiv = document.createElement("div");
   toDoDiv.classList.add("input-box");
@@ -57,8 +88,16 @@ function showTask(title, desc, index) {
   indexNumber.classList.add("index")
   indexNumber.textContent = index
 
+  // edit task 
   const editBtn = document.createElement("button");
   editBtn.classList.add("edit-btn");
+  editBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    editTask(index)
+    console.log("clicked");
+  })
+
   const removeBtn = document.createElement("button");
   removeBtn.classList.add("remove-btn");
 
@@ -66,8 +105,10 @@ function showTask(title, desc, index) {
   removeBtn.addEventListener("click", function (e) {
     e.preventDefault()
 
-    //removeBtn.parentElement.remove()
     removeTask(index)
+
+    localStorage.setItem("task", JSON.stringify(tasks));
+
     mostrar()
   })
 
