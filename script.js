@@ -4,7 +4,9 @@ const submitToDo = document.getElementById("submit-to-do");
 const submitError = document.querySelector(".input-error");
 const toDoBox = document.querySelector(".input-boxes");
 const form = document.getElementById("form");
+const updateBtnsBox = document.querySelector(".update-btns")
 const updateBtn = document.getElementById("update-btn");
+const errorMsg = document.querySelector(".input-error")
 
 let editIndex;
 let tasks = [];
@@ -96,7 +98,10 @@ function showTask(title, desc, index) {
 
     editTask(index)
     console.log("clicked");
-  })
+
+      submitToDo.classList.add("btn-disable")
+      updateBtnsBox.classList.add("update-click")
+  });
 
   const removeBtn = document.createElement("button");
   removeBtn.classList.add("remove-btn");
@@ -137,11 +142,18 @@ function showTask(title, desc, index) {
 submitToDo.addEventListener("click", function (e) {
   e.preventDefault()
 
-  addTask(inpTitle.value, inpDesc.value);
-  mostrar()
+
+  if(!inpTitle.value || !inpDesc.value) {
+    errorMsg.classList.add("fire-input-error")
+  } else {
+    addTask(inpTitle.value, inpDesc.value);
+    mostrar()
+    errorMsg.classList.remove("fire-input-error")
+  }
+
 
   clear()
-})
+});
 
 function clear() {
   form.reset();
