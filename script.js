@@ -76,6 +76,10 @@ updateBtn.addEventListener("click", function (e) {
 
   clear()
 
+  updateBtnsBox.classList.remove("update-click");
+  submitToDo.classList.remove("btn-disable")
+  
+
 })
 
 // inyectar el codigo y crear los estilos de las cajas de tasks
