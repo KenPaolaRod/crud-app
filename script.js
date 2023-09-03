@@ -7,7 +7,7 @@ const form = document.getElementById("form");
 const updateBtnsBox = document.querySelector(".update-btns");
 const updateBtn = document.getElementById("update-btn");
 const errorMsg = document.querySelector(".input-error");
-const numberOfTasks = document.querySelector(".number-of-to-do")
+const numberOfTasks = document.querySelector(".number-of-to-do");
 
 let editIndex;
 let tasks = [];
@@ -24,7 +24,7 @@ function loadTasks() {
   } else {
     []
   }
-}
+};
 
 // Mostrar task en el UI
 function mostrar() {
@@ -38,7 +38,7 @@ function mostrar() {
 
   // mostrar el numero de tasks que hay pendientes
   numberOfTasks.textContent = `Hi Kenyerling, you have ${tasks.length} in your list`
-}
+};
 
 // aempujar task al array de tasks
 function addTask(tit, dec) {
@@ -49,20 +49,20 @@ function addTask(tit, dec) {
 
   tasks.push(myTask)
   localStorage.setItem("task", JSON.stringify(tasks));
-}
+};
 
 // eliminar task
 function removeTask(task) {
   tasks.splice(task, 1)
   localStorage.setItem("task", JSON.stringify(tasks));
-}
+};
 
 // cuando se le da click al boton de editar, poder editar.
 function editTask(index) {
   editIndex = index
   inpTitle.value = tasks[index].title
   inpDesc.value = tasks[index].desc
-}
+};
 
 // poder ver reflejados los cambios editados
 function updateTask() {
@@ -71,12 +71,11 @@ function updateTask() {
 
   localStorage.setItem("task", JSON.stringify(tasks));
   mostrar()
-}
+};
 
 updateBtn.addEventListener("click", function (e) {
   e.preventDefault();
   updateTask()
-  console.log(tasks);
 
   clear()
 
@@ -84,7 +83,7 @@ updateBtn.addEventListener("click", function (e) {
   submitToDo.classList.remove("btn-disable")
   
 
-})
+});
 
 // inyectar el codigo y crear los estilos de las cajas de tasks
 function showTask(title, desc, index) {
@@ -105,10 +104,10 @@ function showTask(title, desc, index) {
     e.preventDefault();
 
     editTask(index)
-    console.log("clicked");
 
-      submitToDo.classList.add("btn-disable")
-      updateBtnsBox.classList.add("update-click")
+      submitToDo.classList.add("btn-disable");
+      updateBtnsBox.classList.add("update-click");
+
   });
 
   const removeBtn = document.createElement("button");
@@ -123,7 +122,7 @@ function showTask(title, desc, index) {
     localStorage.setItem("task", JSON.stringify(tasks));
 
     mostrar()
-  })
+  });
 
   const editIcon = document.createElement("i");
   editIcon.classList.add("fa-solid");
@@ -145,7 +144,7 @@ function showTask(title, desc, index) {
   editBtn.appendChild(editIcon);
   removeBtn.appendChild(removeIcon);
 
-}
+};
 
 submitToDo.addEventListener("click", function (e) {
   e.preventDefault()
@@ -165,7 +164,7 @@ submitToDo.addEventListener("click", function (e) {
 
 function clear() {
   form.reset();
-}
+};
 
 
 
