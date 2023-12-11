@@ -81,9 +81,10 @@ updateBtn.addEventListener("click", function (e) {
 
   updateBtnsBox.classList.remove("update-click");
   submitToDo.classList.remove("btn-disable")
-  
+
 
 });
+
 
 // inyectar el codigo y crear los estilos de las cajas de tasks
 function showTask(title, desc, index) {
@@ -108,6 +109,8 @@ function showTask(title, desc, index) {
       submitToDo.classList.add("btn-disable");
       updateBtnsBox.classList.add("update-click");
 
+      // removeBtn.disabled = true;
+      // removeBtn.style.color = "grey"
   });
 
   const removeBtn = document.createElement("button");
